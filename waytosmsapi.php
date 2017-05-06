@@ -80,6 +80,5 @@
 	  $text = curl_exec($curl);
 	  curl_close($curl);
 	  return $result;
-	  
-	  var_dump($result);die;
+	
 ?>
