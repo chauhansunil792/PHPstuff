@@ -1,0 +1,41 @@
+<?php
+
+// require Facebook PHP SDK
+// see: https://developers.facebook.com/docs/php/gettingstarted/
+require_once("facebook.php");
+ 
+// initialize Facebook class using your own Facebook App credentials
+// see: https://developers.facebook.com/docs/php/gettingstarted/#install
+$config = array();
+$config['appId'] = 'your facebook app id';
+$config['secret'] = 'your facebook app secret';
+$config['fileUpload'] = false; // optional
+ 
+$fb = new Facebook($config);
+
+
+
+//the comment parameter is used to post status with link in facebook 
+// define your POST parameters (replace with your own values)
+$params = array(
+  "access_token" => "Your page access token",
+  // see: https://developers.facebook.com/docs/facebook-login/access-tokens/
+  "message" => "post message ",
+  //"link" => "http://mystatus.epizy.com",
+  "url" => "link to photo,
+ // "name" => "Mystatus - Daily New status",
+  "caption" => "Mystatus.epizy.com",
+  //"description" => "Mystatus is a website which is provides daily new status and quotes for whatsapp and facebook."
+);
+
+ 
+// post to Facebook
+// see: https://developers.facebook.com/docs/reference/php/facebook-api/
+try {
+  $ret = $fb->api('/Yourpageid/photos', 'POST', $params);
+  echo 'Successfully posted to Facebook';
+} catch(Exception $e) {
+  echo $e->getMessage();
+}
+
+?>
